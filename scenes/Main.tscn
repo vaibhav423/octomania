@@ -1,0 +1,212 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqxvyxkqvhqxj"]
+
+[ext_resource type="Script" uid="uid://cx3t18i84h1qo" path="res://scripts/GameManager.gd" id="1_0k8xd"]
+[ext_resource type="PackedScene" uid="uid://3u63ed78g0dv" path="res://scenes/Player.tscn" id="2_1k8xd"]
+[ext_resource type="Texture2D" uid="uid://bxi8xsxeo3ixl" path="res://Assets/Evf3l3tWgAQ1k41.png" id="2_rarhs"]
+[ext_resource type="PackedScene" uid="uid://b7dru3x5m4j0" path="res://scenes/Enemy.tscn" id="3_2k8xd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(800, 20)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0k8xd")
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="Walls" type="Node2D" parent="Arena"]
+
+[node name="TopWall" type="StaticBody2D" parent="Arena/Walls"]
+position = Vector2(400, 10)
+
+[node name="ColorRect" type="ColorRect" parent="Arena/Walls/TopWall"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -10.0
+offset_right = 400.0
+offset_bottom = 10.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Walls/TopWall"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="BottomWall" type="StaticBody2D" parent="Arena/Walls"]
+position = Vector2(400, 590)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Walls/BottomWall"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="ColorRect" type="ColorRect" parent="Arena/Walls/BottomWall"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -10.0
+offset_right = 400.0
+offset_bottom = 10.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="LeftWall" type="StaticBody2D" parent="Arena/Walls"]
+position = Vector2(10, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Walls/LeftWall"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_1")
+
+[node name="ColorRect" type="ColorRect" parent="Arena/Walls/LeftWall"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -300.0
+offset_right = 10.0
+offset_bottom = 300.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RightWall" type="StaticBody2D" parent="Arena/Walls"]
+position = Vector2(790, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Walls/RightWall"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_1")
+
+[node name="ColorRect" type="ColorRect" parent="Arena/Walls/RightWall"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -300.0
+offset_right = 10.0
+offset_bottom = 300.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="BackgroundImage" type="TextureRect" parent="Arena"]
+z_index = -2
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 799.0
+offset_bottom = 601.0
+texture = ExtResource("2_rarhs")
+expand_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_1k8xd")]
+position = Vector2(101, 300)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("3_2k8xd")]
+position = Vector2(600, 150)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("3_2k8xd")]
+position = Vector2(650, 450)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("3_2k8xd")]
+position = Vector2(700, 300)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("3_2k8xd")]
+position = Vector2(720, 200)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameOverLabel" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+text = "Game Over!
+Press R to Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinLabel" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+text = "You Win!
+Press R to Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_left = 600.0
+offset_top = 10.0
+offset_right = 790.0
+offset_bottom = 50.0
+text = "Score: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StartScreen" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartBackground" type="ColorRect" parent="UI/StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="StartLabel" type="Label" parent="UI/StartScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OCTOMANIA
+WASD/Arrow Keys: Move
+Space: Shoot stone
+Touch stone to pick it up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartInstructions" type="Label" parent="UI/StartScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press O to Start"
+horizontal_alignment = 1
+vertical_alignment = 1

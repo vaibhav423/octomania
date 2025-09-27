@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7dru3x5m4j0"]
+
+[ext_resource type="Script" uid="uid://iu803tva3i77" path="res://scripts/Enemy.gd" id="1_2k8xd"]
+[ext_resource type="Texture2D" uid="uid://bgumjuhm3m1rx" path="res://Assets/Gemini_Generated_Image_xru0dnxru0dnxru0-removebg-preview_1.png" id="2_55jtl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpr68"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(0, 0, 125, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8do"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(250, 125, 125, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wwv6"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(125, 125, 125, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vja8"]
+atlas = ExtResource("2_55jtl")
+region = Rect2(375, 250, 125, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwav8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpr68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wwv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vja8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_2k8xd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iwav8")
+frame_progress = 0.8803396
+
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="BulletDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
