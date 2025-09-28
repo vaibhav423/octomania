@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfqxvyxkqvhqxj"]
+[gd_scene load_steps=4 format=3 uid="uid://dexe2fqxm04hv"]
 
-[ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_3k8xd"]
+[ext_resource type="Script" uid="uid://cwcpnploo5557" path="res://scripts/Bullet.gd" id="1_3k8xd"]
+[ext_resource type="Texture2D" uid="uid://cpvh8mug4uba8" path="res://Assets/Gemini_Generated_Image_pcjr3apcjr3apcjr-removebg-preview.png" id="2_p1sfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 8.0
@@ -11,18 +12,6 @@ script = ExtResource("1_3k8xd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1")
 
-[node name="BulletImage" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-color = Color(0, 0, 0, 1)
-
 [node name="PickupArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
@@ -32,3 +21,7 @@ shape = SubResource("CircleShape2D_1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_1")
+
+[node name="bullet_sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.042061377, 0.04211306)
+texture = ExtResource("2_p1sfj")

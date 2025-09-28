@@ -4,9 +4,11 @@ extends Node2D
 @onready var enemies = $Enemies
 @onready var game_over_label = $UI/GameOverLabel
 @onready var win_label = $UI/WinLabel
-@onready var score_label = $UI/ScoreLabel
+@onready var score_label = $UI/ScorePanel/ScoreLabel
 @onready var background_image = $Arena/BackgroundImage
 @onready var start_screen = $UI/StartScreen
+@onready var mobile_controls = $MobileControls
+@onready var toggle_controls_check_button = $UI/ToggleControlsCheckButton
 
 var bullet_scene = preload("res://scenes/Bullet.tscn")
 var enemy_scene = preload("res://scenes/Enemy.tscn")
@@ -36,15 +38,28 @@ func _ready():
 	for enemy in enemies.get_children():
 		enemy.died.connect(_on_enemy_died)
 		enemy.bullet_shot.connect(_on_enemy_bullet_shot)
+	
+	# Connect the toggle check button's toggled signal
+	toggle_controls_check_button.toggled.connect(_on_toggle_controls_toggled)
+	# Set initial state
+	mobile_controls.visible = false
+	# Set the font color to dark blue for all states
+	var dark_blue = Color(0, 0, 0.5, 1)
+	toggle_controls_check_button.add_theme_color_override("font_color", dark_blue)
+	toggle_controls_check_button.add_theme_color_override("font_hover_color", dark_blue)
+	toggle_controls_check_button.add_theme_color_override("font_pressed_color", dark_blue)
+	toggle_controls_check_button.add_theme_color_override("font_focus_color", dark_blue)
+	toggle_controls_check_button.add_theme_color_override("font_disabled_color", dark_blue)
 
 func _input(event):
-	if event is InputEventKey and event.pressed:
-		print("Key pressed: ", event.keycode, " (O is ", KEY_O, ")")
-		if event.keycode == KEY_O and not game_started:
-			print("O key detected, starting game!")
-			start_game()
-		elif event.keycode == KEY_R and game_over:
-			restart_game()
+	# Start game on mouse click or screen touch
+	if not game_started and (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT or event is InputEventScreenTouch and event.pressed):
+		start_game()
+	
+	# Restart game on key press or touch
+	if game_over and (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT or event is InputEventScreenTouch and event.pressed):
+		restart_game()
+
 
 func start_game():
 	game_started = true
@@ -161,3 +176,6 @@ func pickup_bullet_for_enemy(enemy):
 
 func restart_game():
 	get_tree().reload_current_scene()
+
+func _on_toggle_controls_toggled(button_pressed):
+	mobile_controls.visible = button_pressed

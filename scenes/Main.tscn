@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqxvyxkqvhqxj"]
+[gd_scene load_steps=8 format=3 uid="uid://bqxvyxkqvhqxj"]
 
 [ext_resource type="Script" uid="uid://cx3t18i84h1qo" path="res://scripts/GameManager.gd" id="1_0k8xd"]
 [ext_resource type="PackedScene" uid="uid://3u63ed78g0dv" path="res://scenes/Player.tscn" id="2_1k8xd"]
 [ext_resource type="Texture2D" uid="uid://bxi8xsxeo3ixl" path="res://Assets/Evf3l3tWgAQ1k41.png" id="2_rarhs"]
 [ext_resource type="PackedScene" uid="uid://b7dru3x5m4j0" path="res://scenes/Enemy.tscn" id="3_2k8xd"]
+[ext_resource type="Texture2D" uid="uid://b2do8c7fdsbum" path="res://Assets/gdb-switch-2.png" id="5_vcsgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(800, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+radius = 8.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0k8xd")
@@ -129,7 +133,7 @@ offset_top = -50.0
 offset_right = 100.0
 offset_bottom = 50.0
 text = "Game Over!
-Press R to Restart"
+Click or Touch to Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -145,18 +149,38 @@ offset_top = -50.0
 offset_right = 100.0
 offset_bottom = 50.0
 text = "You Win!
-Press R to Restart"
+Click or Touch to Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="UI"]
-offset_left = 600.0
-offset_top = 10.0
-offset_right = 790.0
-offset_bottom = 50.0
+[node name="ScorePanel" type="Panel" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 33.0
+offset_right = 110.0
+offset_bottom = 83.0
+grow_horizontal = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/ScorePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Score: 0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ToggleControlsCheckButton" type="CheckButton" parent="UI"]
+offset_left = 31.0
+offset_top = 33.0
+offset_right = 202.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.31034705, 0.19261017, 0.88241816, 1)
+text = "Mobile Controls"
 
 [node name="StartScreen" type="Control" parent="UI"]
 layout_mode = 3
@@ -207,6 +231,68 @@ offset_right = 100.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Press O to Start"
+text = "Click or Touch to Start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MobileControls" type="CanvasLayer" parent="."]
+
+[node name="MoveUpButton" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(150, 400)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_2")
+action = "move_up"
+
+[node name="Sprite2D" type="Sprite2D" parent="MobileControls/MoveUpButton"]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("5_vcsgt")
+region_enabled = true
+region_rect = Rect2(384, 288, 16, 16)
+
+[node name="MoveDownButton" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(150, 500)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_2")
+action = "move_down"
+
+[node name="Sprite2D" type="Sprite2D" parent="MobileControls/MoveDownButton"]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("5_vcsgt")
+region_enabled = true
+region_rect = Rect2(384, 320, 16, 16)
+
+[node name="MoveLeftButton" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(100, 450)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_2")
+action = "move_left"
+
+[node name="Sprite2D" type="Sprite2D" parent="MobileControls/MoveLeftButton"]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("5_vcsgt")
+region_enabled = true
+region_rect = Rect2(384, 336, 16, 16)
+
+[node name="MoveRightButton" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(200, 450)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_2")
+action = "move_right"
+
+[node name="Sprite2D" type="Sprite2D" parent="MobileControls/MoveRightButton"]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("5_vcsgt")
+region_enabled = true
+region_rect = Rect2(384, 304, 16, 16)
+
+[node name="ShootButton" type="TouchScreenButton" parent="MobileControls"]
+position = Vector2(650, 450)
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_2")
+action = "shoot"
+
+[node name="Sprite2D" type="Sprite2D" parent="MobileControls/ShootButton"]
+modulate = Color(1, 1, 1, 0.5)
+texture = ExtResource("5_vcsgt")
+region_enabled = true
+region_rect = Rect2(384, 256, 16, 16)
