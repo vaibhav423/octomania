@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Octomania"
+config/name="COIN-GREED"
 config/description="A 2D dodgeball-style game with bouncing stone"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
@@ -67,6 +67,14 @@ start_game={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy_bullet"
+2d_physics/layer_4="enemy"
+2d_physics/layer_5="player_bullet"
 
 [physics]
 

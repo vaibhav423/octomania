@@ -1,23 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://3u63ed78g0dv"]
+[gd_scene load_steps=7 format=3 uid="uid://3u63ed78g0dv"]
 
 [ext_resource type="Script" uid="uid://bcjth2e22aa7k" path="res://scripts/Player.gd" id="1_1k8xd"]
-[ext_resource type="Texture2D" uid="uid://ciel0oqtk1h10" path="res://Assets/Gemini_Generated_Image_xru0dnxru0dnxru0-removebg-preview.png" id="2_v6fml"]
+[ext_resource type="Texture2D" uid="uid://c4ipauqbyg2qv" path="res://Assets/Custom___Edited_-_The_Legend_of_Zelda_Customs_-_Other_Characters_-_Hyrule_Guard__Zelda_Game_Boy-Style__1__2_-removebg-preview.png" id="2_v6fml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3li8b"]
 atlas = ExtResource("2_v6fml")
-region = Rect2(125, 0, 125, 125)
+region = Rect2(0, 0, 16, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdl7e"]
 atlas = ExtResource("2_v6fml")
-region = Rect2(375, 250, 125, 125)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qu4a1"]
-atlas = ExtResource("2_v6fml")
-region = Rect2(250, 125, 125, 125)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_70d11"]
-atlas = ExtResource("2_v6fml")
-region = Rect2(375, 125, 125, 125)
+region = Rect2(16, 0, 16, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cw2d6"]
 animations = [{
@@ -27,25 +19,23 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mdl7e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qu4a1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_70d11")
 }],
 "loop": true,
 "name": &"new_animation",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v6fml"]
-radius = 33.124947
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu4a1"]
+size = Vector2(49.20813, 85.36104)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_1k8xd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+position = Vector2(0, -0.99999994)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_cw2d6")
 animation = &"new_animation"
 frame_progress = 0.9424769
@@ -53,11 +43,11 @@ frame_progress = 0.9424769
 [node name="BulletDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector"]
-position = Vector2(0, -24)
+position = Vector2(-0.49999905, -0.50000143)
 scale = Vector2(0.99577045, 0.99577045)
-shape = SubResource("CircleShape2D_v6fml")
+shape = SubResource("RectangleShape2D_qu4a1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(-0.49999905, -0.50000143)
 scale = Vector2(0.99577045, 0.99577045)
-shape = SubResource("CircleShape2D_v6fml")
+shape = SubResource("RectangleShape2D_qu4a1")

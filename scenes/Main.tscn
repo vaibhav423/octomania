@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cx3t18i84h1qo" path="res://scripts/GameManager.gd" id="1_0k8xd"]
 [ext_resource type="PackedScene" uid="uid://3u63ed78g0dv" path="res://scenes/Player.tscn" id="2_1k8xd"]
-[ext_resource type="Texture2D" uid="uid://bxi8xsxeo3ixl" path="res://Assets/Evf3l3tWgAQ1k41.png" id="2_rarhs"]
+[ext_resource type="Texture2D" uid="uid://b6rrm3rk2i5a4" path="res://Assets/2839122.jpg" id="2_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://b7dru3x5m4j0" path="res://scenes/Enemy.tscn" id="3_2k8xd"]
 [ext_resource type="Texture2D" uid="uid://b2do8c7fdsbum" path="res://Assets/gdb-switch-2.png" id="5_vcsgt"]
 
@@ -14,6 +14,12 @@ radius = 8.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0k8xd")
+
+[node name="CoinTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Coins" type="Node2D" parent="."]
 
 [node name="Arena" type="Node2D" parent="."]
 
@@ -99,7 +105,7 @@ offset_left = -1.0
 offset_top = 1.0
 offset_right = 799.0
 offset_bottom = 601.0
-texture = ExtResource("2_rarhs")
+texture = ExtResource("2_vcsgt")
 expand_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_1k8xd")]

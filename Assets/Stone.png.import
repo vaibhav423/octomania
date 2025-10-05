@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd6olneq2pvfc"
-path="res://.godot/imported/Gemini_Generated_Image_ds16nvds16nvds16-removebg-preview.png-e6a7cfeb881a6a2e968b4c97f4ecfee0.ctex"
+uid="uid://t71db0wcxxa8"
+path="res://.godot/imported/Stone.png-8c315bacae2ecd3f7796e5f4330a0e6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Gemini_Generated_Image_ds16nvds16nvds16-removebg-preview.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_ds16nvds16nvds16-removebg-preview.png-e6a7cfeb881a6a2e968b4c97f4ecfee0.ctex"]
+source_file="res://Assets/Stone.png"
+dest_files=["res://.godot/imported/Stone.png-8c315bacae2ecd3f7796e5f4330a0e6e.ctex"]
 
 [params]
 

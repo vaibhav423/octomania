@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdtsxo7ppcyxq"
-path="res://.godot/imported/Gemini_Generated_Image_ds16nvds16nvds16.png-b6543c6de8bc68474191294177bd52ae.ctex"
+uid="uid://buiq1364ijagx"
+path="res://.godot/imported/coin.png-acdc5bd90821d624fccbb224f33e96e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Gemini_Generated_Image_ds16nvds16nvds16.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_ds16nvds16nvds16.png-b6543c6de8bc68474191294177bd52ae.ctex"]
+source_file="res://scenes/coin.png"
+dest_files=["res://.godot/imported/coin.png-acdc5bd90821d624fccbb224f33e96e6.ctex"]
 
 [params]
 
