@@ -218,10 +218,10 @@ offset_right = 150.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "OCTOMANIA
+text = "COIN-GREED
 WASD/Arrow Keys: Move
-Space: Shoot stone
-Touch stone to pick it up"
+Space: Shoot pellet
+Touch pellet to pick it up"
 horizontal_alignment = 1
 vertical_alignment = 1
 
